@@ -1,39 +1,49 @@
-<h1>Burgers!</h1>
-{{!-- <div> --}}
-    <h2>Uneaten burgers will go here</h2>
-<div class="uneaten">
-  {{#each burgers}}
-    {{#unless devoured}}
-      <p class="burgerP">{{id}}. {{burger_name}} <button class="eat-btn" id="{{id}}">Eat it!</button></p>
-      
-    {{/unless}}
-  {{/each}}
+<div class = "container">
 
+<h1 class="header center red-text">Special Tracker</h1>
+    <div class="row center">
+
+        <div class="uneaten col m6 sm6">
+        <h4>Future Specials</h4>
+        {{#each burgers}}
+            {{#unless devoured}}
+            <p class="burgerP">{{id}}. {{burger_name}}    <button class="btn yellow accent-3 eat-btn" id="{{id}}">Done!</button></p>
+            
+            {{/unless}}
+        {{/each}}
+        </div>
+
+        <div class="devoured col m6 sm6">
+            <h4>Past Specials</h4>
+            {{#each burgers}}
+            {{#if devoured}}
+            <p class="burgerP">{{id}}. {{burger_name}} </p>
+            
+            {{/if}}
+        {{/each}}
+        </div>
+    </div>
+
+    <h2 class="center red-text">Add a New Burger Idea</h2>
+    <form class="create-form">
+
+    <div class="form-group">
+        {{!-- <label for="bname">Burger Name:</label>
+        <input type="text" id="bname" name="name"> --}}
+
+
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="bname" type="text" class="validate">
+                <label class="active" for="bname">Burger Name</label>
+                </div>
+            </div>
+        </div>
+
+    <button class="btn-large waves-effect waves-light red" type="submit">Add Burger</button>
+    </form>
 </div>
 
 
-{{!-- </div> --}}
 
-<div class="devoured">
-    <h2>Eaten will go here</h2>
-    {{#each burgers}}
-    {{#if devoured}}
-      <p class="burgerP">{{id}}. {{burger_name}} </p>
-      
-    {{/if}}
-  {{/each}}
-</div>
-
-<h2>Add a Burger</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="bname">Burger Name:</label>
-    <input type="text" id="bname" name="name">
-  </div>
-
-  <button type="submit">Add Burger</button>
-</form>
-
-
- 
+ {{!-- <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a> --}}
