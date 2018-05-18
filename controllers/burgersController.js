@@ -12,8 +12,8 @@ router.get("/", function(req, res) {
             burgers: data
         };
         console.log(hbsObject);
-        // res.render("index", hbsObject)
-        res.json(hbsObject)
+        res.render("index", hbsObject)
+        // res.json(hbsObject)
     });
 });
 
@@ -28,7 +28,7 @@ router.put("/api/burgers/:id", function(req, res) {
     var condition = "id = "+ req.params.id;
     console.log(condition);
 
-    burger.update({devoured: req.body.devoured}, condition, function(result){
+    burger.update(req.body.devoured, condition, function(result){
         if (result.changedRows == 0) {
             // If no rows were changed, then the ID must not exist, so 404
             return res.status(404).end();
@@ -38,5 +38,10 @@ router.put("/api/burgers/:id", function(req, res) {
     });
 });
 
+// update: function(value, condition, cb) {
+//     orm.updateOne("burgers", "devoured", value, condition, function(res) {
+//       cb(res);
+//     });
+//   }
 
 module.exports = router;
